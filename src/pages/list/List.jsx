@@ -1,9 +1,11 @@
 import React from "react";
-import "./List.css";
+import useStyles from "./ListStyle";
 
 const List = () => {
+  const classes = useStyles();
+
   return (
-    <div>
+    <div className={classes.page}>
       List
     </div>
   );

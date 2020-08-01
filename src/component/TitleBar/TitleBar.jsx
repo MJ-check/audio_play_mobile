@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import useStyles from "./TitleBarStyle";
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -8,12 +8,23 @@ import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
 import RestoreIcon from '@material-ui/icons/Restore';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 
-const TitleBar = ({ content }) => {
-  const classes = useStyles();
-  const [value, setValue] = React.useState('home');
+/**
+ * config: {
+ *    chooseValue: *string*("home"),
+ *    content: *DOM*(<div></div>),
+ * }
+ * navigateTo: function(newValue)
+ */
 
+const TitleBar = ({ config, navigateTo }) => {
+  const classes = useStyles();
+  const [value, setValue] = useState(null);
+
+  useEffect(() => {
+    setValue(config.chooseValue);
+  }, [config]);
   const handleChange = (event, newValue) => {
-    setValue(newValue);
+    navigateTo(newValue);
   };
 
   return (
@@ -28,7 +39,7 @@ const TitleBar = ({ content }) => {
         </AppBar>
       </div>
       <div className={classes.content}>
-        {content}
+        {config.content}
       </div>
       <div className={classes.root}>
         <BottomNavigation value={value} onChange={handleChange}>

@@ -1,16 +1,34 @@
-import React from "react";
-import { HashRouter, Route } from "react-router-dom";
+import React, { useState } from "react";
+import TitleBar from "./component/TitleBar/TitleBar";
 import Home from "./pages/home/Home";
 import List from "./pages/list/List";
 
 const App = () => {
+  const [linkPage, setLinkPage] = useState("home");
+
+  const handleNavigateTo = (page) => {
+    setLinkPage(page);
+  };
+  const chooseContent = () => {
+    switch(linkPage) {
+      case "home":
+        return <Home />;
+      case "list":
+        return <List />;
+      default:
+        return null;
+    };
+  };
+
   return (
     <div>
-      <HashRouter>
-        <Route exact path="/" render={() => (<Home />)} />
-        <Route path="/home" render={() => (<Home />)} />
-        <Route path="/list" render={() => (<List />)} />
-      </HashRouter>
+      <TitleBar 
+        navigateTo={handleNavigateTo}
+        config={{
+          chooseValue: linkPage,
+          content: chooseContent(),
+        }}
+      />
     </div>
   );
 }

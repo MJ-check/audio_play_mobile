@@ -1,7 +1,9 @@
 import React from "react";
-import "./Login.css";
+import useStyles from "./LoginStyle";
 
 const Login = () => {
+  const classes = useStyles();
+  
   return (
     <div>
       Login
