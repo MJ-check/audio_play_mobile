@@ -1,10 +1,76 @@
 import React from "react";
-import "./Home.css";
+import useStyles from "./HomeStyle";
+import TitleBar from "../../component/TitleBar/TitleBar";
 
-const Home = () => {
+const Test = () => {
   return (
     <div>
-      Home
+      <div>Hello world</div>
+      <div>Hello world</div>
+      <div>Hello world</div>
+      <div>Hello world</div>
+      <div>Hello world</div>
+      <div>Hello world</div>
+      <div>Hello world</div>
+      <div>Hello world</div>
+      <div>Hello world</div>
+      <div>Hello world</div>
+      <div>Hello world</div>
+      <div>Hello world</div>
+      <div>Hello world</div>
+      <div>Hello world</div>
+      <div>Hello world</div>
+      <div>Hello world</div>
+      <div>Hello world</div>
+      <div>Hello world</div>
+      <div>Hello world</div>
+      <div>Hello world</div>
+      <div>Hello world</div>
+      <div>Hello world</div>
+      <div>Hello world</div>
+      <div>Hello world</div>
+      <div>Hello world</div>
+      <div>Hello world</div>
+      <div>Hello world</div>
+      <div>Hello world</div>
+      <div>Hello world</div>
+      <div>Hello world</div>
+      <div>Hello world</div>
+      <div>Hello world</div>
+      <div>Hello world</div>
+      <div>Hello world</div>
+      <div>Hello world</div>
+      <div>Hello world</div>
+      <div>Hello world</div>
+      <div>Hello world</div>
+      <div>Hello world</div>
+      <div>Hello world</div>
+      <div>Hello world</div>
+      <div>Hello world</div>
+      <div>Hello world</div>
+      <div>Hello world</div>
+      <div>Hello world</div>
+      <div>Hello world</div>
+      <div>Hello world</div>
+      <div>Hello world</div>
+      <div>Hello world</div>
+      <div>Hello world</div>
+      <div>Hello world</div>
+      <div>Hello world</div>
+      <div>Hello world</div>
+      <div>Hello world</div>
+      <div>Hello world</div>
+      <div>Hello world</div>
+    </div>
+  );
+}
+
+const Home = () => {
+  const classes = useStyles();
+
+  return (
+    <div className={classes.page}>
+      <TitleBar content={<Test />}/>
     </div>
   );
 }
