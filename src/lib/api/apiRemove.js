@@ -5,7 +5,7 @@ function apiRemove(music_id, list_id, callBack) {
     callBack(null);
     return ;
   }
-  fetch(api_remove, {
+  fetch(api_remove(), {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

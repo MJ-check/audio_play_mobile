@@ -1,7 +1,7 @@
 import { api_all_music } from "../apiConfig";
 
 function apiAllMusic(callBack) {
-  fetch(api_all_music, {
+  fetch(api_all_music(), {
     method: "GET"
   })
   .then(res => res.json())

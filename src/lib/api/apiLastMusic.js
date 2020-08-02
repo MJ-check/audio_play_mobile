@@ -1,7 +1,7 @@
 import { api_last_music } from "../apiConfig";
 
 function apiLastMusic(callBack) {
-  fetch(api_last_music, {
+  fetch(api_last_music(), {
     method: "GET"
   })
   .then(res => res.json())

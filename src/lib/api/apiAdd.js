@@ -5,7 +5,7 @@ function apiAdd(music_id, list_id, callBack) {
     callBack(null);
     return ;
   }
-  fetch(api_add, {
+  fetch(api_add(), {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

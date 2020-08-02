@@ -11,7 +11,7 @@ const useStyles = makeStyles((theme) => ({
     position: "absolute",
     height: "100%",
     width: "100%",
-    top: "0px",
+    top: 0,
     overflowY: "scroll",
   },
   content: {
@@ -24,7 +24,7 @@ const useStyles = makeStyles((theme) => ({
   root: {
     position: "absolute",
     width: "100%",
-    bottom: "0px",
+    bottom: 0,
     flexGrow: 1,
   },
   menuButton: {
