@@ -1,12 +1,15 @@
 import { makeStyles } from "@material-ui/core/styles";
 
-const useStyles = makeStyles((theme) => ({
+const HomeStyles = makeStyles((theme) => ({
   page: {
     position: "absolute",
     width: "100%",
     height: "100%",
     overflowY: "scroll",
   },
+}));
+
+const CarouselStyles = makeStyles((theme) => ({
   carousel_page: {
     width: "100%",
     height: 353,
@@ -59,7 +62,7 @@ const useStyles = makeStyles((theme) => ({
   mobile_stepper: {
     boxSizing: "border-box",
     width: "100%",
-  }
+  },
 }));
 
-export default useStyles;
+export default { HomeStyles, CarouselStyles };
