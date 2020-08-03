@@ -65,4 +65,4 @@ const CarouselStyles = makeStyles((theme) => ({
   },
 }));
 
-export default { HomeStyles, CarouselStyles };
+export { HomeStyles, CarouselStyles };

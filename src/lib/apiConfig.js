@@ -1,5 +1,4 @@
 const api_all_music = () => { return "/api/all_music"; }
-const api_last_music = () => { return "/api/last_music"; }
 const api_music = (music_id) => { return "/api/music?id=" + music_id; };
 const api_collect_list = () => { return "/api/collect_list"; }
 const api_list = (list_id) => { return "/api/list?id=" + list_id; };
@@ -13,7 +12,6 @@ const list_image_url = "/public/list";
 
 export {
   api_all_music,
-  api_last_music,
   api_music,
   api_collect_list,
   api_list,

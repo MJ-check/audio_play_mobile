@@ -1,10 +1,142 @@
 import { makeStyles } from "@material-ui/core/styles";
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
   page: {
     position: "absolute",
     width: "100%",
-  }
-});
+    height: "100%",
+    overflow: "hidden",
+  },
+  loading: {
+    position: "absolute",
+    width: "100%",
+    height: "100%",
+    top: 0,
+    left: 0,
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  container: {
+    position: "absolute",
+    width: "100%",
+    height: "100%",
+    top: 0,
+    left: 0,
+  },
+  background: {
+    position: "absolute",
+    width: "100%",
+    height: "100%",
+    top: 0,
+    left: 0,
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  background_img: {
+    width: "100%",
+    height: "100%",
+    objectFit: "cover",
+    filter: "blur(15px)",
+  },
+  content: {
+    position: "absolute",
+    width: "100%",
+    height: "100%",
+    top: 0,
+    left: 0,
+    boxSizing: "border-box",
+    overflowY: "scroll",
+    overflowX: "hidden",
+  },
+  list_img_container: {
+    width: 110,
+    height: 50,
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  list_img: {
+    width: "100%",
+    height: "100%",
+    objectFit: "cover",
+  },
+  list_name: {
+    height: 50,
+    width: "100%",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
+    fontSize: theme.typography.pxToRem(15),
+  },
+  list_container: {
+    width: "100%",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  list_msg: {
+    width: "100%",
+    boxSizing: "border-box",
+    textAlign: "center",
+    fontSize: "small",
+    margin: "8px 0px",
+  },
+  list_music: {
+    width: "100%",
+  },
+  list_loading: {
+    width: "100%",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  music_container: {
+    width: "100%",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  music: {
+    width: "100%",
+    marginTop: 10,
+    borderBottom: "1px dotted rgba(0, 0, 0, 0.6)",
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+  },
+  music_msg: {
+    width: "66%",
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+  },
+  music_name: {
+    marginLeft: "10%",
+  },
+  signer_name: {
+    marginRight: "10%",
+  },
+  music_button: {
+    width: "34%",
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  a_button: {
+    margin: "0px 5%",
+  },
+}));
 
 export default useStyles;
