@@ -37,43 +37,47 @@ const MusicOnShow = ({
               src={"/public/image/" + musicOnPlay.music_name + ".png"}
             />
           </div>
-          <div className={classes.container}>
-            <div className={classes.img_content}>
-              <img
-                className={classes.img}
-                alt=""
-                src={"/public/image/" + musicOnPlay.music_name + ".png"}
-              />
+          <div className={classes.music_container}>
+            <div className={classes.music_img_content}>
+              <div className={classes.img_content}>
+                <img
+                  className={classes.img}
+                  alt=""
+                  src={"/public/image/" + musicOnPlay.music_name + ".png"}
+                />
+              </div>
             </div>
-            <div className={classes.slider}>
-              <Slider
-                max={maxLength}
-                min={0}
-                color="secondary"
-                value={sliderValue}
-                onChange={(event, newValue) => changeValue(newValue)}
-                aria-labelledby="continuous-slider" 
-              />
-            </div>
-            <div className={classes.buttons}>
-              <div className={classes.a_button}>
-                <PlaylistAddIcon fontSize="large" onClick={() => openBox()}/>
+            <div className={classes.music_content}>
+              <div className={classes.slider}>
+                <Slider
+                  max={maxLength}
+                  min={0}
+                  color="secondary"
+                  value={sliderValue}
+                  onChange={(event, newValue) => changeValue(newValue)}
+                  aria-labelledby="continuous-slider" 
+                />
               </div>
-              <div className={classes.a_button}>
-                <SkipPreviousIcon fontSize="large" onClick={() => lastMusic()}/>
-              </div>
-              <div className={classes.a_button}>
-                {playStatus === true ? (
-                  <PauseIcon fontSize="large" onClick={() => changeStatus()}/>
-                ) : (
-                  <PlayArrowIcon fontSize="large" onClick={() => changeStatus()}/>
-                )}
-              </div>
-              <div className={classes.a_button}>
-                <SkipNextIcon fontSize="large" onClick={() => nextMusic()}/>
-              </div>
-              <div className={classes.a_button}>
-                <FullscreenExitIcon fontSize="large" onClick={() => changeOnShow()}/>
+              <div className={classes.buttons}>
+                <div className={classes.a_button}>
+                  <PlaylistAddIcon fontSize="large" onClick={() => openBox()}/>
+                </div>
+                <div className={classes.a_button}>
+                  <SkipPreviousIcon fontSize="large" onClick={() => lastMusic()}/>
+                </div>
+                <div className={classes.a_button}>
+                  {playStatus === true ? (
+                    <PauseIcon fontSize="large" onClick={() => changeStatus()}/>
+                  ) : (
+                    <PlayArrowIcon fontSize="large" onClick={() => changeStatus()}/>
+                  )}
+                </div>
+                <div className={classes.a_button}>
+                  <SkipNextIcon fontSize="large" onClick={() => nextMusic()}/>
+                </div>
+                <div className={classes.a_button}>
+                  <FullscreenExitIcon fontSize="large" onClick={() => changeOnShow()}/>
+                </div>
               </div>
             </div>
           </div>
