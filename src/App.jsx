@@ -17,8 +17,6 @@ const App = () => {
     const music_on_play = window.localStorage.getItem("musicOnPlay");
     if (music_on_play) {
       setMusicOnPlay(music_on_play);
-    } else {
-      setMusicOnPlay(null);
     }
   }, []);
   const handleNavigateTo = (page) => {
