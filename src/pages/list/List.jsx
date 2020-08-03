@@ -10,7 +10,7 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import PlayCircleFilledIcon from '@material-ui/icons/PlayCircleFilled';
 import PlaylistAddIcon from '@material-ui/icons/PlaylistAdd';
 
-const List = () => {
+const List = ({ changeMusic }) => {
   const classes = useStyles();
   const [allList, setAllList] = useState(null);
   const [listMusic, setListMusic] = useState(null);
@@ -98,7 +98,10 @@ const List = () => {
                                     </div>
                                   </div>
                                   <div className={classes.music_button}>
-                                    <PlayCircleFilledIcon className={classes.a_button}/>
+                                    <PlayCircleFilledIcon 
+                                      className={classes.a_button}
+                                      onClick={() => changeMusic(item.music_id)}
+                                    />
                                     <PlaylistAddIcon className={classes.a_button} fontSize="large"/>
                                   </div>
                                 </div>

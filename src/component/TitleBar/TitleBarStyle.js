@@ -6,6 +6,8 @@ const useStyles = makeStyles((theme) => ({
     zIndex: 0,
     width: "100%",
     height: "100%",
+    top: 0,
+    left: 0,
   },
   header: {
     position: "absolute",

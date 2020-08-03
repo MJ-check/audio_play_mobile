@@ -48,6 +48,8 @@ const useStyles = makeStyles((theme) => ({
     height: "100%",
     top: 0,
     left: 0,
+    paddingBottom: 50,
+    paddingTop: 15,
     boxSizing: "border-box",
     overflowY: "scroll",
     overflowX: "hidden",

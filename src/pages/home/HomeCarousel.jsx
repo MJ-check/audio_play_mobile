@@ -18,10 +18,14 @@ const HomeCarousel = ({ lastMusic }) => {
   const maxSteps = 5;
   const [activeStep, setActiveStep] = useState(0);
   const handleNext = () => {
-    setActiveStep((prevActiveStep) => prevActiveStep + 1);
+    setActiveStep((prevActiveStep) => {
+      return prevActiveStep + 1 === maxSteps ? 0 : prevActiveStep + 1;
+    });
   };
   const handleBack = () => {
-    setActiveStep((prevActiveStep) => prevActiveStep - 1);
+    setActiveStep((prevActiveStep) => {
+      return prevActiveStep === 0 ? maxSteps - 1 : prevActiveStep - 1;
+    });
   };
   const handleStepChange = (step) => {
     setActiveStep(step);
@@ -64,13 +68,13 @@ const HomeCarousel = ({ lastMusic }) => {
             steps={maxSteps}
             activeStep={activeStep}
             nextButton={
-              <Button size="small" onClick={handleNext} disabled={activeStep === maxSteps - 1}>
+              <Button size="small" onClick={handleNext}>
                 Next
                 {theme.direction === 'rtl' ? <KeyboardArrowLeft /> : <KeyboardArrowRight />}
               </Button>
             }
             backButton={
-              <Button size="small" onClick={handleBack} disabled={activeStep === 0}>
+              <Button size="small" onClick={handleBack}>
                 {theme.direction === 'rtl' ? <KeyboardArrowRight /> : <KeyboardArrowLeft />}
                 Back
               </Button>

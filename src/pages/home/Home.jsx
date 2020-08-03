@@ -3,7 +3,7 @@ import { HomeStyles } from "./HomeStyle";
 import apiAllMusic from "../../lib/api/apiAllMusic";
 import HomeCarousel from "./HomeCarousel";
 
-const Home = () => {
+const Home = ({ changeMusic }) => {
   const classes = HomeStyles();
   const [allMusic, setAllMusic] = useState(null);
   const [lastMusic, setLastMusic] = useState(null);
