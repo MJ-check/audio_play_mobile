@@ -5,8 +5,8 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import BottomNavigation from '@material-ui/core/BottomNavigation';
 import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
-import RestoreIcon from '@material-ui/icons/Restore';
 import FavoriteIcon from '@material-ui/icons/Favorite';
+import HomeIcon from '@material-ui/icons/Home';
 
 /**
  * config: {
@@ -43,7 +43,7 @@ const TitleBar = ({ config, navigateTo }) => {
       </div>
       <div className={classes.root}>
         <BottomNavigation value={value} onChange={handleChange}>
-          <BottomNavigationAction label="首页" value="home" icon={<RestoreIcon />} />
+          <BottomNavigationAction label="首页" value="home" icon={<HomeIcon />} />
           <BottomNavigationAction label="收藏夹" value="list" icon={<FavoriteIcon />} />
         </BottomNavigation>
       </div>
