@@ -4,7 +4,7 @@ import apiAllMusic from "../../lib/api/apiAllMusic";
 import HomeCarousel from "./HomeCarousel";
 
 const Home = ({ changeMusic }) => {
-  const classes = HomeStyles();
+  const classes = HomeStyles({ clientWidth: document.body.clientWidth });
   const [allMusic, setAllMusic] = useState(null);
   const [lastMusic, setLastMusic] = useState(null);
 
@@ -20,6 +20,31 @@ const Home = ({ changeMusic }) => {
   return (
     <div className={classes.page}>
       <HomeCarousel lastMusic={lastMusic}/>
+      {allMusic === null ? "" : (
+        <div className={classes.content}>
+          {allMusic.map((item, index) => {
+            return (
+              <div 
+                className={classes.music_container} 
+                key={"music" + index}
+                onClick={() => changeMusic(item.music_id)}
+              >
+                <div className={classes.background}>
+                  <img 
+                    className={classes.background_img}
+                    alt=""
+                    src={"/public/image/" + item.music_name + ".png"}
+                  />
+                </div>
+                <div className={classes.text}>
+                  <div className={classes.word}>{item.music_name.split("--")[0]}</div>
+                  <div className={classes.word}>{item.music_name.split("--")[1]}</div>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      )}
     </div>
   );
 }
