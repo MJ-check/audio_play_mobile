@@ -56,6 +56,10 @@ const MusicOnShow = ({
               </div>
             </div>
             <div className={classes.music_content}>
+              <div className={classes.music_name}>
+                <div>{musicOnPlay.music_name.split("--")[0]}</div>
+                <div>{musicOnPlay.music_name.split("--")[1]}</div>
+              </div>
               <div className={classes.slider}>
                 <Slider
                   max={maxLength}

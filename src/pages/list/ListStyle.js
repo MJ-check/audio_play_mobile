@@ -139,6 +139,15 @@ const useStyles = makeStyles((theme) => ({
   a_button: {
     margin: "0px 5%",
   },
+  box: {
+    position: "absolute",
+    width: "100%",
+    height: "100%",
+    top: 0,
+    left: 0,
+    zIndex: 1500,
+    overflow: "hidden",
+  },
 }));
 
 export default useStyles;

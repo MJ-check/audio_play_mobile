@@ -45,7 +45,7 @@ const musicOnShowStyles = makeStyles({
   },
   music_img_content: {
     width: "100%",
-    height: "80%",
+    height: "75%",
     display: "flex",
     flexDirection: "column",
     justifyContent: "center",
@@ -69,10 +69,18 @@ const musicOnShowStyles = makeStyles({
   },
   music_content: {
     width: "100%",
-    height: "20%",
+    height: "25%",
     display: "flex",
     flexDirection: "column",
     justifyContent: "flex-start",
+    alignItems: "center",
+  },
+  music_name: {
+    width: "50%",
+    textAlign: "center",
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "space-between",
     alignItems: "center",
   },
   slider: {

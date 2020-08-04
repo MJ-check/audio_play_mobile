@@ -9,6 +9,7 @@ import AccordionSummary from '@material-ui/core/AccordionSummary';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import PlayCircleFilledIcon from '@material-ui/icons/PlayCircleFilled';
 import PlaylistAddIcon from '@material-ui/icons/PlaylistAdd';
+import StatusBox from "../../component/StatusBox/StatusBox";
 
 const List = ({ changeMusic }) => {
   const classes = useStyles();
@@ -16,6 +17,7 @@ const List = ({ changeMusic }) => {
   const [listMusic, setListMusic] = useState(null);
   const [expanded, setExpanded] = useState(false);
   const [boxStyle, setBoxStyle] = useState(null);
+  const [openBox, setOpenBox] = useState(null);
 
   useEffect(() => {
     apiCollectList((data) => {
@@ -34,6 +36,12 @@ const List = ({ changeMusic }) => {
         setListMusic(data);
       });
     }
+  };
+  const changeOpenBox = (music_id) => {
+    setOpenBox(music_id);
+  };
+  const closeOpenBox = () => {
+    setOpenBox(null);
   };
 
   return (
@@ -102,7 +110,11 @@ const List = ({ changeMusic }) => {
                                       className={classes.a_button}
                                       onClick={() => changeMusic(item.music_id)}
                                     />
-                                    <PlaylistAddIcon className={classes.a_button} fontSize="large"/>
+                                    <PlaylistAddIcon 
+                                      className={classes.a_button} 
+                                      fontSize="large"
+                                      onClick={() => changeOpenBox(item.music_id)}
+                                    />
                                   </div>
                                 </div>
                               );
@@ -116,6 +128,16 @@ const List = ({ changeMusic }) => {
               );
             })}
           </div>
+          {openBox !== null ? (
+            <div className={classes.box}>
+              <StatusBox 
+                maxWidth={window.screen.width}
+                maxHeight={window.screen.height}
+                musicID={openBox}
+                closeBox={closeOpenBox}
+              />
+            </div>
+          ) : ""}
         </div>
       )}
     </div>
