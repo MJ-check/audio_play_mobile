@@ -11,7 +11,6 @@ const Music = ({ musicOnPlay }) => {
   const [music, setMusic] = useState(null);
   const [playStatus, setPlayStatus] = useState(false);
   const [currentValue, setCurrentValue] = useState(0);
-  const [boxStatus, setBoxStatus] = useState(false);
   const [isFirstOpen, setIsFirstOpen] = useState(true);
 
   useEffect(() => {
@@ -67,9 +66,6 @@ const Music = ({ musicOnPlay }) => {
   const handleLastMusic = () => {
     console.log("last music");
   };
-  const handleOpenBox = () => {
-    console.log("open box");
-  };
 
   return (
     <div className={classes.page}>
@@ -89,7 +85,6 @@ const Music = ({ musicOnPlay }) => {
           changeStatus={handleChangeStatus}
           nextMusic={handleNextMusic}
           lastMusic={handleLastMusic}
-          openBox={handleOpenBox}
           maxLength={music ? parseInt(music.duration) : 1}
         />
       )}

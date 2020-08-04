@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { musicOnShowStyles } from "./MusicStyle";
 import CircularProgress from '@material-ui/core/CircularProgress';
 import Slider from '@material-ui/core/Slider';
@@ -8,6 +8,7 @@ import SkipNextIcon from '@material-ui/icons/SkipNext';
 import SkipPreviousIcon from '@material-ui/icons/SkipPrevious';
 import PlaylistAddIcon from '@material-ui/icons/PlaylistAdd';
 import FullscreenExitIcon from '@material-ui/icons/FullscreenExit';
+import StatusBox from "../../component/StatusBox/StatusBox";
 
 const MusicOnShow = ({ 
   changeOnShow, 
@@ -18,10 +19,17 @@ const MusicOnShow = ({
   changeStatus,
   nextMusic,
   lastMusic,
-  openBox,
   maxLength
 }) => {
   const classes = musicOnShowStyles({ clientWidth: document.body.clientWidth });
+  const [openBox, setOpenBox] = useState(false);
+  const changeOpenBox = () => {
+    setOpenBox(true);
+  };
+  const handleCloseBox = () => {
+    setOpenBox(false);
+  };
+
   return (
     <div className={classes.page}>
       {musicOnPlay === null ? (
@@ -60,7 +68,7 @@ const MusicOnShow = ({
               </div>
               <div className={classes.buttons}>
                 <div className={classes.a_button}>
-                  <PlaylistAddIcon fontSize="large" onClick={() => openBox()}/>
+                  <PlaylistAddIcon fontSize="large" onClick={() => changeOpenBox()}/>
                 </div>
                 <div className={classes.a_button}>
                   <SkipPreviousIcon fontSize="large" onClick={() => lastMusic()}/>
@@ -80,6 +88,18 @@ const MusicOnShow = ({
                 </div>
               </div>
             </div>
+          </div>
+          <div>
+            {openBox === true ? (
+              <div className={classes.box}>
+                <StatusBox 
+                  maxWidth={window.screen.width}
+                  maxHeight={window.screen.height}
+                  musicID={musicOnPlay.music_id}
+                  closeBox={handleCloseBox}
+                />
+              </div>
+            ) : ""}
           </div>
         </div>
       )}

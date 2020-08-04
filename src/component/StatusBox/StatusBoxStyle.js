@@ -1,0 +1,100 @@
+import { makeStyles } from "@material-ui/core/styles";
+
+const useStyles = makeStyles({
+  page: {
+    width: "100%",
+    height: "100%",
+    backgroundColor: "rgba(0, 0, 0, 0.6)",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  container: props => ({
+    width: props.maxWidth * 0.75,
+    height: props.maxHeight * 0.6,
+    backgroundColor: "white",
+  }),
+  loading: {
+    width: "100%",
+    height: "100%",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  content: {
+    width: "100%",
+    height: "100%",
+  },
+  close: {
+    position: "relative",
+    top: -38,
+    left: 5,
+  },
+  text: {
+    position: "relative",
+    width: "calc(100% - 40px)",
+    boxSizing: "border-box",
+    top: 25,
+    margin: "0 20px",
+    paddingBottom: 10,
+    borderBottom: "1px dotted black",
+    textAlign: "center",  
+    fontSize: 25,
+    fontWeight: "bold",
+  },
+  list_content: {
+    position: "relative",
+    width: "100%",
+    height: 310,
+    overflowY: "scroll",
+    overflowX: "hidden",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "flex-start",
+    alignItems: "center",
+    boxSizing: "border-box",
+    padding: "0px 30px",
+  },
+  list: {
+    width: "100%",
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    borderBottom: "1px solid black",
+    boxSizing: "border-box",
+    paddingBottom: 5,
+    marginTop: 10,
+  },
+  list_name: {
+    fontSize: 18,
+  },
+  button: {
+    fontSize: 18,
+  },
+  already_in: {
+    padding: 0,
+    textAlign: "center",
+  },
+  not_in: {
+    padding: 0,
+    textAlign: "center",
+  },
+  loading_data: {
+    position: "relative",
+    width: "100%",
+    height: "100%",
+    top: "-100%",
+    overflow: "hidden",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
+    boxSizing: "border-box",
+    backgroundColor: "rgba(0, 0, 0, 0.1)",
+  },
+});
+
+export default useStyles;
