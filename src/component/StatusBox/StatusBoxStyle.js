@@ -82,11 +82,11 @@ const useStyles = makeStyles({
     padding: 0,
     textAlign: "center",
   },
-  loading_data: {
+  loading_data: props => ({
     position: "relative",
-    width: "100%",
-    height: "100%",
-    top: "-100%",
+    width: props.maxWidth * 0.75,
+    height: props.maxHeight * 0.6,
+    top: -props.maxHeight * 0.6,
     overflow: "hidden",
     display: "flex",
     flexDirection: "column",
@@ -94,7 +94,7 @@ const useStyles = makeStyles({
     alignItems: "center",
     boxSizing: "border-box",
     backgroundColor: "rgba(0, 0, 0, 0.1)",
-  },
+  }),
 });
 
 export default useStyles;
