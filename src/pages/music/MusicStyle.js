@@ -4,6 +4,10 @@ const musicPageStyles = makeStyles({
   page: {},
 });
 
+const playListStyles = makeStyles({
+  page: {},
+});
+
 const musicOnShowStyles = makeStyles({
   page: {
     position: "absolute",
@@ -147,4 +151,9 @@ const musicHideStyles = makeStyles({
   }
 });
 
-export { musicPageStyles, musicOnShowStyles, musicHideStyles };
+export { 
+  musicPageStyles, 
+  musicOnShowStyles, 
+  musicHideStyles,
+  playListStyles
+};

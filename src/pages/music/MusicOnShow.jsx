@@ -10,16 +10,19 @@ import PlaylistAddIcon from '@material-ui/icons/PlaylistAdd';
 import FullscreenExitIcon from '@material-ui/icons/FullscreenExit';
 import StatusBox from "../../component/StatusBox/StatusBox";
 
+/**
+ * MusicOnShow 音乐播放器展示状态 
+ */
 const MusicOnShow = ({ 
-  changeOnShow, 
-  musicOnPlay,
-  sliderValue,
-  changeValue,
-  playStatus,
-  changeStatus,
-  nextMusic,
-  lastMusic,
-  maxLength
+  changeOnShow,   // function 改变音乐播放器 Hide 或者 Onshow状态
+  musicOnPlay,    // json 正在播放的音乐 
+  sliderValue,    // int 音乐播放进度
+  changeValue,    // function 改变音乐当前播放进度
+  playStatus,     // bool 音乐播放状态 播放 或者 暂停
+  changeStatus,   // function 改变音乐播放状态
+  nextMusic,      // function 播放下一首音乐
+  lastMusic,      // function 播放上一首音乐
+  maxLength       // int 音乐条最大取值
 }) => {
   const classes = musicOnShowStyles({ clientWidth: document.body.clientWidth });
   const [openBox, setOpenBox] = useState(false);

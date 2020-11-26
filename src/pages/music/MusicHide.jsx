@@ -4,10 +4,13 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 import PlayArrowIcon from '@material-ui/icons/PlayArrow';
 import PauseIcon from '@material-ui/icons/Pause';
 
+/**
+ * MusicHide 音乐播放器收起状态 
+ */
 const MusicHide = ({ 
-  changeOnShow,
-  musicOnPlay,
-  playStatus
+  changeOnShow,   // function 改变音乐播放器状态 Hide 或者 OnShow
+  musicOnPlay,    // json 正在播放的音乐信息
+  playStatus      // bool 音乐播放状态 播放 或者 暂停
 }) => {
   const classes = musicHideStyles();
 
