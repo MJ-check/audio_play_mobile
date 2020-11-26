@@ -2,43 +2,55 @@ import React, { useState, useEffect } from "react";
 import { musicPageStyles } from "./MusicStyle";
 import MusicHide from "./MusicHide";
 import MusicOnShow from "./MusicOnShow";
-import apiMusic from "../../lib/api/apiMusic";
 
-const Music = ({ musicOnPlay }) => {
+/**
+ * Music 音乐播放器组件 
+ */
+const Music = ({ 
+  musicOnPlay,    // 正在播放的音乐 
+  onChangeMusic,  // 切换音乐
+}) => {
   const classes = musicPageStyles();
   const [onShow, setOnShow] = useState(false);
   const [musicMsg, setMusicMsg] = useState(null);
   const [music, setMusic] = useState(null);
   const [playStatus, setPlayStatus] = useState(false);
   const [currentValue, setCurrentValue] = useState(0);
-  const [isFirstOpen, setIsFirstOpen] = useState(true);
+  const [isFirstOpen, setIsFirstOpen] = useState(true);  // 用于第一次加载判断
 
   useEffect(() => {
-    if (music) { music.pause(); }
-    apiMusic(musicOnPlay, (data) => {
-      setMusicMsg(data);
-      if (data !== null) {
-        const audio = new Audio("/public/music/" + data.music_name + ".mp3");
-        audio.addEventListener("ended", () => {
-          setPlayStatus(false);
-        });
-        audio.addEventListener("timeupdate", (event) => {
-          const new_time = event.path ? event.path[0].currentTime : event.target.currentTime;
-          setCurrentValue(parseInt(new_time));
-        });
-        if (isFirstOpen === true) {
-          audio.pause();
-          setPlayStatus(false);
-          setIsFirstOpen(false);
-        } else {
-          audio.play();
-          setPlayStatus(true);
-        }
-        setMusic(audio);
+    // 上一首歌曲暂停
+    if ( music ) {
+      music.pause();
+      setPlayStatus(false);
+    } 
+
+    // 加载下一首歌曲
+    setMusicMsg(musicOnPlay);
+    if ( musicOnPlay ) {
+      const audio = new Audio("/public/music/" + musicOnPlay.music_name + ".mp3");
+      audio.addEventListener("ended", () => {
+        setPlayStatus(false);
+      });
+      audio.addEventListener("timeupdate", (event) => {
+        const new_time = event.path ? event.path[0].currentTime : event.target.currentTime;
+        setCurrentValue(parseInt(new_time));
+      });
+      if ( isFirstOpen === true ) {
+        audio.pause();
+        setPlayStatus(false);
+        setIsFirstOpen(false);
+      } else {
+        audio.play();
+        setPlayStatus(true);
       }
-    });
+      setMusic(audio);
+    } else {
+      console.error("Parameter musicOnPlay equals null!");
+    }
   // eslint-disable-next-line
   }, [musicOnPlay]);
+  
   const handleChangeOnShow = () => {
     setOnShow(!onShow);
   };

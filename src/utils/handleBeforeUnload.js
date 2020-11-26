@@ -29,18 +29,14 @@ const addBeforeUnloadFunction = ( func, value ) => {
 
 // 执行所有函数
 const carryBeforeUnloadFunction = () => {
-  if ( functionList ) {
-    window.onbeforeunload = e => {
-      functionList.forEach(( item ) => {
-        const func = item.func;
-        const value = item.value;
-        func(value);
-      });
-      return null;
-    };
-  } else {
+  if ( functionList )
+    functionList.forEach(( item ) => {
+      const func = item.func;
+      const value = item.value;
+      func(value);
+    });
+  else
     console.error("FunctionList Not Init!");
-  }
 };
 
 export {
