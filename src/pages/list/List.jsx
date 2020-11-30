@@ -108,7 +108,7 @@ const List = ({ changeMusic }) => {
                                   <div className={classes.music_button}>
                                     <PlayCircleFilledIcon 
                                       className={classes.a_button}
-                                      onClick={() => changeMusic(item)}
+                                      onClick={() => changeMusic({ musicMsg: item, })}
                                     />
                                     <PlaylistAddIcon 
                                       className={classes.a_button} 

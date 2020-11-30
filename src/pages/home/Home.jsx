@@ -27,7 +27,7 @@ const Home = ({ changeMusic }) => {
               <div 
                 className={classes.music_container} 
                 key={"music" + index}
-                onClick={() => changeMusic(item)}
+                onClick={() => changeMusic({ musicMsg: item, })}
               >
                 <div className={classes.background}>
                   <img 

@@ -32,7 +32,7 @@ const Music = ({
       audio.addEventListener("ended", () => {
         setPlayStatus(false);
       });
-      audio.addEventListener("timeupdate", (event) => {
+      audio.addEventListener("timeupdate", event => {
         const new_time = event.path ? event.path[0].currentTime : event.target.currentTime;
         setCurrentValue(parseInt(new_time));
       });
@@ -45,7 +45,7 @@ const Music = ({
         setPlayStatus(true);
       }
       setMusic(audio);
-    } else {
+    } else if ( isFirstOpen === false ) {
       console.error("Parameter musicOnPlay equals null!");
     }
   // eslint-disable-next-line

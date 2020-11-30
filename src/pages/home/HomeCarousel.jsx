@@ -12,7 +12,9 @@ import SwipeableViews from 'react-swipeable-views';
 import { autoPlay } from 'react-swipeable-views-utils';
 const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
 
-const HomeCarousel = ({ lastMusic }) => {
+const HomeCarousel = ({ 
+  lastMusic,    // 最新的5首音乐
+}) => {
   const classes = CarouselStyles();
   const theme = useTheme();
   const maxSteps = 5;
