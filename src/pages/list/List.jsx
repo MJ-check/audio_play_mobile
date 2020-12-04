@@ -3,27 +3,39 @@ import useStyles from "./ListStyle";
 import apiCollectList from "../../lib/api/apiCollectList";
 import apiList from "../../lib/api/apiList";
 import CircularProgress from '@material-ui/core/CircularProgress';
+import Snackbar from '@material-ui/core/Snackbar';
+import MuiAlert from '@material-ui/lab/Alert';
 import Accordion from '@material-ui/core/Accordion';
 import AccordionDetails from '@material-ui/core/AccordionDetails';
 import AccordionSummary from '@material-ui/core/AccordionSummary';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import PlayCircleFilledIcon from '@material-ui/icons/PlayCircleFilled';
 import PlaylistAddIcon from '@material-ui/icons/PlaylistAdd';
-import StatusBox from "../../component/StatusBox/StatusBox";
+//import StatusBox from "../../component/StatusBox/StatusBox";
 
-const List = ({ changeMusic }) => {
+function Alert(props) {
+  return <MuiAlert elevation={6} variant="filled" {...props} />;
+}
+
+const List = ({ 
+  changeMusic,      // 更改正在播放的音乐
+  changePlayList,   // 更新音乐播放列表 
+}) => {
   const classes = useStyles();
   const [allList, setAllList] = useState(null);
   const [listMusic, setListMusic] = useState(null);
   const [expanded, setExpanded] = useState(false);
   const [boxStyle, setBoxStyle] = useState(null);
-  const [openBox, setOpenBox] = useState(null);
+  // 提示栏打开状态
+  const [openSnackbar, setOpenSnackbar] = useState("");
 
   useEffect(() => {
     apiCollectList((data) => {
       setAllList(data);
     });
   }, []);
+
+  // 更改收藏夹的开闭状态
   const handleChange = (panel) => (event, isExpanded) => {
     const getExtended = isExpanded ? panel.list_name : false;
     setExpanded(getExtended);
@@ -37,11 +49,18 @@ const List = ({ changeMusic }) => {
       });
     }
   };
-  const changeOpenBox = (music_id) => {
-    setOpenBox(music_id);
-  };
-  const closeOpenBox = () => {
-    setOpenBox(null);
+
+  // 更新音乐播放列表
+  const handleChangePlayList = music => {
+    const return_msg = changePlayList("add", music);
+    setOpenSnackbar(return_msg);
+  }
+
+  // 关闭提示栏函数
+  const handleCloseSnackbar = (event, reason) => {
+    if (reason === 'clickaway') 
+      return;
+    setOpenSnackbar("");
   };
 
   return (
@@ -113,7 +132,7 @@ const List = ({ changeMusic }) => {
                                     <PlaylistAddIcon 
                                       className={classes.a_button} 
                                       fontSize="large"
-                                      onClick={() => changeOpenBox(item.music_id)}
+                                      onClick={() => handleChangePlayList(item)}
                                     />
                                   </div>
                                 </div>
@@ -128,15 +147,28 @@ const List = ({ changeMusic }) => {
               );
             })}
           </div>
-          {openBox !== null ? (
-            <div className={classes.box}>
+          {openSnackbar !== "" ? (
+            <Snackbar
+              anchorOrigin={{ vertical: 'top', horizontal: 'center', }} 
+              open={openSnackbar === "" ? false : true} 
+              autoHideDuration={3000} 
+              onClose={handleCloseSnackbar}
+            >
+              <Alert 
+                onClose={handleCloseSnackbar} 
+                severity={openSnackbar === "添加成功" ? "success" : "warning"}
+              >
+                {openSnackbar}
+              </Alert>
+            </Snackbar>
+            /*<div className={classes.box}>
               <StatusBox 
                 maxWidth={window.screen.width}
                 maxHeight={window.screen.height}
                 musicID={openBox}
                 closeBox={closeOpenBox}
               />
-            </div>
+            </div>*/
           ) : ""}
         </div>
       )}

@@ -77,7 +77,7 @@ const App = () => {
     initBeforeUnloadFunctionList();
     window.onbeforeunload = e => {
       carryBeforeUnloadFunction();
-      return "a";
+      return null;
     };
   }, []);
 
@@ -91,9 +91,12 @@ const App = () => {
   const chooseContent = () => {
     switch(linkPage) {
       case "home":
-        return <Home changeMusic={handleChangeMusic}/>;
+        return  <Home changeMusic={handleChangeMusic}/>;
       case "list":
-        return <List changeMusic={handleChangeMusic}/>;
+        return  <List 
+                  changeMusic={handleChangeMusic}
+                  changePlayList={handleChangePlayList}
+                />;
       default:
         return null;
     };
@@ -109,9 +112,7 @@ const App = () => {
     } else if ( toLast ) {
       result =  switchToLastMusic(playList.ptr);
     }
-
-    console.log(result);
-
+    // 存储变化
     window.localStorage.setItem("musicOnPlay", JSON.stringify(result[0]));
     setMusicOnPlay(result[0]);
     const load_play_list = { list: playList.list, ptr: result[1], };
@@ -128,18 +129,34 @@ const App = () => {
       // 当播放列表改变时修改网页关闭函数列，并保证播放列表不为空
       if ( new_list.length === 0 ) {
         apiLastMusic(data => {
-          load_play_list.list = data ? data : [];   
+          if ( data ) {
+            load_play_list.list = data;
+            data.forEach((item, index) => {
+              if ( item.music_id === musicOnPlay.music_id )
+                load_play_list.ptr = index;
+            });
+          } else {
+            load_play_list.list = [];
+            load_play_list.ptr = 0;
+          }
           setPlayList(load_play_list);
           addBeforeUnloadFunction(storePlayList, load_play_list, 0);
         });
       } else {
         load_play_list.list = new_list;
+        new_list.forEach((item, index) => {
+          if ( item.music_id === musicOnPlay.music_id )
+            load_play_list.ptr = index;
+        });
         setPlayList(load_play_list);
         addBeforeUnloadFunction(storePlayList, load_play_list, 0);
       }
+      return "添加成功";
     } else {
       // 发出警告
       const warning_string = new_list;
+      console.error("PlayList Operation " + warning_string + " !");
+      return warning_string;
     }
   };
 
@@ -155,6 +172,8 @@ const App = () => {
       <Music 
         musicOnPlay={musicOnPlay}
         onChangeMusic={handleChangeMusic}
+        playList={playList}
+        changePlayList={handleChangePlayList}
       />
     </div>
   );
