@@ -38,8 +38,10 @@
 
 ## 相关项目链接
 
-- Audio Play 后台项目：Audio Play Server
-  - <https://github.com/MJ-check/audio_play_server>
-- Audio Play PC端项目：Audio Play Client
-  - <https://github.com/MJ-check/audio_play_client>
-  
+Audio Play 后台项目：Audio Play Server
+
+<https://github.com/MJ-check/audio_play_server>
+
+Audio Play PC端项目：Audio Play Client
+
+<https://github.com/MJ-check/audio_play_client>
